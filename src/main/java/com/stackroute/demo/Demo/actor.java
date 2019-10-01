@@ -1,4 +1,4 @@
-package com.stackroute.domain;
+package com.stackroute.demo.Demo;
 
 public class actor {
 
@@ -10,6 +10,10 @@ public class actor {
         this.name = name;
         this.gender = gender;
         this.age = age;
+    }
+
+    public actor() {
+
     }
 
     public String getName() {
