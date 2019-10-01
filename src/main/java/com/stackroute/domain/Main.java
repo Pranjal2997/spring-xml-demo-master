@@ -8,15 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 public class Main {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
-        movie movie=(movie)applicationContext.getBean("movie");
-
-        XmlBeanFactory xmlBeanFactory= new XmlBeanFactory ( new ClassPathResource("beans.xml"));
-        movie movieFirst= (movie)xmlBeanFactory.getBean("movie");
-
-        System.out.println(movie.getActor().getName());
-
-        movie.setApplicationContext(applicationContext);
-        movieFirst.setBeanFactory(xmlBeanFactory);
-        movie.setBeanName("Spiderman");
+        ((ClassPathXmlApplicationContext) applicationContext).registerShutdownHook();
+        BeanLifeCycleDemo beanLifeCycleDemo = (BeanLifeCycleDemo) applicationContext.getBean("cycle");
     }
 }
